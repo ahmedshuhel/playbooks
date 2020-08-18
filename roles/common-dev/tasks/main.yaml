@@ -2,6 +2,11 @@
 - name: Install common dev tools
   include_tasks: "{{ ansible_os_family|lower }}.yaml"
 
+- name: Clone devlife
+  git:
+    repo: 'git@github.com:ahmedshuhel/devlife.git'
+    dest: "{{ devlife_dir }}"
+
 - name: Clone dotfiles
   git:
     repo: 'git@github.com:ahmedshuhel/dotfiles.git'
@@ -34,6 +39,13 @@
   file:
     src: "{{ devenv_dir }}/.tmuxp"
     dest: "{{ home_dir }}/.tmuxp"
+    force: yes
+    state: link
+
+- name: Create template folder symlink
+  file:
+    src: "{{ dotfiles_dir }}/.templates"
+    dest: "{{ home_dir }}/.templates"
     force: yes
     state: link
 
