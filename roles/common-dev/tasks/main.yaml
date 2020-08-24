@@ -112,6 +112,13 @@
     force: yes
     state: link
 
+- name: Create shuttlenc symlink
+  file:
+    src: "{{ devenv_dir }}/shuttlenc.sh"
+    dest: "{{ home_dir }}/shuttlenc.sh"
+    force: yes
+    state: link
+
 - name: Clone zsh auto suggestions
   git:
     repo: 'https://github.com/zsh-users/zsh-autosuggestions'
