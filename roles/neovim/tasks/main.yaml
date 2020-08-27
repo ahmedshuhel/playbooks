@@ -2,11 +2,6 @@
 - name: include install tasks
   include_tasks: "{{ ansible_os_family|lower }}.yaml"
 
-- name: install python2 pynvim
-  pip:
-    name: neovim
-    executable: pip2
-
 - name: install python3 pynvim
   pip:
     name: neovim
