@@ -17,12 +17,6 @@
     repo: 'git@github.com:ahmedshuhel/devenv.git'
     dest: "{{ devenv_dir }}"
 
-- name: install sshuttle
-  pip:
-    name: sshuttle
-    extra_args: --user
-    executable: pip3
-
 - name: Install nvm
   shell: >
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
@@ -34,6 +28,12 @@
     curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
   args:
     creates: "{{ home_dir }}/.pyenv"
+
+- name: Install oh-my-zsh
+  shell: >
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  args:
+    creates: "{{ home_dir }}/.oh-my-zsh"
 
 - name: Create tmuxp symlink
   file:
@@ -105,19 +105,6 @@
     force: yes
     state: link
 
-- name: Create shuttle symlink
-  file:
-    src: "{{ dotfiles_dir }}/shuttle.zsh"
-    dest: "{{ home_dir }}/shuttle.zsh"
-    force: yes
-    state: link
-
-- name: Create shuttlenc symlink
-  file:
-    src: "{{ devenv_dir }}/shuttlenc.sh"
-    dest: "{{ home_dir }}/shuttlenc.sh"
-    force: yes
-    state: link
 
 - name: Clone zsh auto suggestions
   git:
@@ -133,4 +120,3 @@
   git:
     repo: 'https://github.com/qoomon/zsh-lazyload.git'
     dest: "{{ home_dir }}/.oh-my-zsh/custom/plugins/zsh-lazyload"
-

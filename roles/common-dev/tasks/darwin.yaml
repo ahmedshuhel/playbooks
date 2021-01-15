@@ -14,10 +14,3 @@
     name: python3
     state: present
 
-- name: install fzf
-  homebrew:
-    name: fzf
-    state: present
-
-- name: configure fzf
-  shell: "$(brew --prefix)/opt/fzf/install --all"
