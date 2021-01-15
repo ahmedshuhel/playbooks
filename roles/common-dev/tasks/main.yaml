@@ -17,6 +17,11 @@
     repo: 'git@github.com:ahmedshuhel/devenv.git'
     dest: "{{ devenv_dir }}"
 
+- name: install tmuxp
+  pip:
+    name: tmuxp
+    executable: pip3
+
 - name: Install nvm
   shell: >
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
@@ -44,8 +49,8 @@
 
 - name: Create template folder symlink
   file:
-    src: "{{ dotfiles_dir }}/.templates"
-    dest: "{{ home_dir }}/.templates"
+    src: "{{ dotfiles_dir }}/.dl"
+    dest: "{{ home_dir }}/.dl"
     force: yes
     state: link
 
