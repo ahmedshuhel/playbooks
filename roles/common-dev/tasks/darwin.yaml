@@ -4,6 +4,11 @@
       name: git
       state: present
 
+- name: install ripgrep
+  homebrew:
+      name: riggrep
+      state: present
+
 - name: install python 2
   homebrew:
     name: python
