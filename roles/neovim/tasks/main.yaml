@@ -1,9 +1,6 @@
 ---
-- name: download neovim
-  get_url:
-    url: https://github.com/neovim/neovim/releases/download/v0.5.0/nvim.appimage
-    dest: "{{local_bin_dir}}/nvim.appimage"
-    mode: u+x
+- name: Install common dev tools
+  include_tasks: "{{ ansible_os_family|lower }}.yaml"
 
 - name: install python3 pynvim
   pip:

@@ -6,13 +6,8 @@
 
 - name: install ripgrep
   homebrew:
-      name: riggrep
+      name: ripgrep
       state: present
-
-- name: install python 2
-  homebrew:
-    name: python
-    state: present
 
 - name: install python3
   homebrew:
