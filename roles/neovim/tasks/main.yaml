@@ -7,23 +7,9 @@
     name: neovim
     executable: pip3
 
-- name: create necessary directories
+- name: Create a symbolic link to nvim folder
   file:
-    path: "{{ item }}"
-    state: directory
-  with_items:
-    - "{{ config_dir }}"
-
-- name: Create a symbolic link (init.lua)
-  file:
-    src: "{{ dotfiles_dir }}/init.lua"
-    dest: "{{ init_file }}"
-    force: yes
-    state: link
-
-- name: Create a symbolic link (lua folder)
-  file:
-    src: "{{ dotfiles_dir }}/lua"
-    dest: "{{ lua_dir }}"
+    src: "{{ dotfiles_dir }}/nvim"
+    dest: "{{ config_dir }}"
     force: yes
     state: link
