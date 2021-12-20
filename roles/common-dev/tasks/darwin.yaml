@@ -14,3 +14,8 @@
     name: python3
     state: present
 
+- name: install coreutils
+  homebrew:
+    name: coreutils
+    state: present
+
