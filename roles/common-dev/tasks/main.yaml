@@ -47,13 +47,6 @@
     force: yes
     state: link
 
-- name: Create template folder symlink
-  file:
-    src: "{{ dotfiles_dir }}/.dl"
-    dest: "{{ home_dir }}/.dl"
-    force: yes
-    state: link
-
 - name: Create tmux.conf symlink
   file:
     src: "{{ dotfiles_dir }}/.tmux.conf"
@@ -93,6 +86,20 @@
   file:
     src: "{{ dotfiles_dir }}/.gitconfig"
     dest: "{{ home_dir }}/.gitconfig"
+    force: yes
+    state: link
+
+- name: Create .gitignore symlink
+  file:
+    src: "{{ dotfiles_dir }}/.gitignore"
+    dest: "{{ home_dir }}/.gitignore"
+    force: yes
+    state: link
+
+- name: Create .gitignore_global symlink
+  file:
+    src: "{{ dotfiles_dir }}/.gitignore_global"
+    dest: "{{ home_dir }}/.gitignore_global"
     force: yes
     state: link
 
